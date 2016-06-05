@@ -2,6 +2,8 @@ function PhotonsContainer () {
 	var phi = 0; var theta = 0;
 
 	var temp = 1; // mean temperature
+	var Mp = null;
+	var Mm = null;
 	var M = null;
 	var cmb_string = null;
 	
@@ -19,7 +21,10 @@ function PhotonsContainer () {
 		if ( ! cmb_string )
 			return console.error("Photons container is not initialized");
 		
-		M = cmb_string.getMatrix()
+		Mp = cmb_string.getMatrix(+1)
+		Mm = cmb_string.getMatrix(-1)
+		
+		M = Mm.inv().x( Mp )
 		// phi from -pi to pi, theta from -pi/2 to pi/2
 		for ( x = -w; x <= w; x++ )
 			for ( y = -h; y <= h; y++ )
@@ -29,7 +34,12 @@ function PhotonsContainer () {
 	
 	this.getTemp = function (phi, theta) {
 		// k_mu = hw q_mu, where q is 
-		var q = Vector.create([1, Math.cos(phi)*Math.cos(theta), Math.sin(phi), 0])
+		var q = Vector.create([
+			1,
+			Math.cos(theta) * Math.sin(phi),
+			Math.cos(theta) * Math.cos(phi),
+			Math.sin(theta)
+		])
 		var w = temp;
 		
 		if ( Math.abs(phi) > Math.PI/2 )
@@ -40,7 +50,7 @@ function PhotonsContainer () {
 		
 		if ( Math.random() > 0.9 ) console.log( M.x(q) );
 		
-		return q.x(w);
+		return M.x(q).x(w);
 	}
 }
 

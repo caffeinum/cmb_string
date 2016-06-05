@@ -2,7 +2,7 @@ function CString (mass) {
 	var mu = this.mu = mass || 1;
 	var G = 1;
 	var eps = function ( num ) { return (num > 0) ? +1 : -1; };
-	var M = function (lam) {
+	var M = function (lam, e) {
 		
 		m_uvyz = Matrix.create(
 		[
@@ -14,9 +14,9 @@ function CString (mass) {
 		
 		m_txyz = Matrix.create(
 		[
-			[1 + lam*lam/4,		-lam*lam/4,			lam*eps(lam),	0], // t
-			[lam*lam/4,			1 - lam*lam/4,		lam*eps(lam),	0], // x
-			[lam*eps(lam)/2,	-lam*eps(lam)/2,	1,				0], // y
+			[1 + lam*lam/4,		-lam*lam/4,			lam*e,			0], // t
+			[lam*lam/4,			1 - lam*lam/4,		lam*e,			0], // x
+			[lam*e/2,			-lam*e/2,			1,				0], // y
 			[0,					0,					0,				1]  // z
 		]);
 		
@@ -31,9 +31,10 @@ function CString (mass) {
 		
 	}
 	
-	this.getMatrix = function (lam) {
+	this.getMatrix = function (e, lam) {
 		lam = lam || (8 * mu * Math.PI * G);
-		return M(lam)
+		e = (e>0) ? +1 : -1;
+		return M(lam, e)
 	}
 }
 
