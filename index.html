@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Visualisation GTR</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="lib/jquery-2.1.1.min.js"></script>
+        <script src="lib/sylvester.src.js"></script>
+		
+		<script src="js/temp.js"></script>
+		<script src="js/drawer.js"></script>
+		<script src="js/drawable.js"></script>
+		<script src="js/string.js"></script>
+        <script src="js/photons.js"></script>
+		<script src="js/map.js"></script>
+		<script src="js/script.js"></script>
+	</head>
+    <body>
+		<div id="container">
+			<h1>GTR visualization</h1>
+			<div id="info">Here's the string</div>
+			Precision from 1 
+			<input id="precision" type="range" min="1" max="100" step="2" /> to 100
+			<button id="setpr">Set precision</button>
+			<br>
+			String's mass from 0.001
+			<input id="mass" type="range" min="0.001" max="1" step="0.001" /> to 1
+			<button id="setmass">Set mass</button>
+			<br>
+			<button id="redraw">Redraw</button>
+			<button id="imgsave">Save to Image</button>
+			<img id="cvsimg" width="1200" height="800" />
+			<div id="canvas-holder">
+			<canvas id="cvs" style="position: absolute;z-index:0"  width="1200" height="800">
+			</canvas>
+			<canvas id="labels" style="position: absolute;z-index:1"  width="1200" height="800">
+			</canvas>
+			</div>
+			<br>
+			
+		</div>
+    </body>
+</html>

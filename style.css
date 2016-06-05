@@ -1,0 +1,30 @@
+#sky,
+#explain
+{
+    display: block;
+    margin: auto;
+}
+
+.hide
+{
+	display:none;
+}
+
+div#container
+{
+	text-align: center;
+}
+
+#canvas-holder{
+	position: absolute;
+	
+}
+#labels {
+	position: relative;
+	z-index: 1;
+}
+
+#cvs {
+	position: relative;
+	z-index: 0;
+}
