@@ -41,20 +41,11 @@ function Drawer(width, height) {
 		objects.push( object );
 	}
 	
-	this.calculate = function (callback) {
-		
+	this.calculate = function (callback) {	
 		objects.forEach(function (elem) {
 			console.log( 'Preparing ' + elem + ' for drawing')
 			elem.prepare(grid, Math.floor(w/2), Math.floor(h/2));
 		})
-		
-		/*for ( x = -width; x <= width; x++ ) {	
-			grid[x] = []
-			for ( y = -height; y <= height; y++ ){
-				grid[x][y] = Vector.create([Math.random(),0,0,0])
-			}
-		}*/
-
 		
 		callback();
 	}

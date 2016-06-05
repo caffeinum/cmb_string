@@ -23,15 +23,17 @@ function CMBMap ( canvasId ) {
 	
 	this.init = function () {
 		// init	
-		
-		this.drawText("Hello, world");
+		this.drawLabels();
+		this.drawAxis();
+		this.drawGrid();
+		this.drawFrame();
 	}
 	
 	this.setSource = function( drawer ) { 
 		this.drawer = drawer
 	}
 	
-	this.clear = function () { 
+	this.clear = function () {
         cnt.clearRect(0, 0, canvas.width, canvas.height);
     };
 	
@@ -94,6 +96,8 @@ function CMBMap ( canvasId ) {
 			this.drawAxis();
 			this.drawGrid();
 			this.drawFrame();
+		} else {
+        	lab_cnt.clearRect(0, 0, canvas.width, canvas.height);
 		}
 	}
 	

@@ -11,7 +11,6 @@ function PhotonsContainer () {
 	this.init = function (str) {
 		// wouldn't be bad to set a string here
 		cmb_string = str;
-		
 	}
 	this.prepare = function (grid, w, h, scale, x, y) {
 		// draw onto the grid
