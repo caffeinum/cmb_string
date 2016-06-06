@@ -3,6 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Visualisation GTR</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		
         <link rel="stylesheet" href="style.css" />
         <script src="lib/jquery-2.1.1.min.js"></script>
         <script src="lib/sylvester.src.js"></script>
@@ -18,13 +22,14 @@
     <body>
 		<div id="container">
 			<h1>GTR visualization</h1>
+			<h5>Анизотропия микроволнового фона, вызванная движением безмассовой космической струны (на примере модели вселенной де Ситтера)</h5>
 			<div id="info">Here's the string</div>
 			Precision from 1 
-			<input id="precision" type="range" width="500" min="1" max="100" step="2" /> to 100
+			<input id="precision" type="range" min="1" max="100" step="2" /> to 100
 			<button id="setpr">Set precision</button>
 			<br>
-			String's mass from 0.001
-			<input id="mass" type="range" width="500" min="0.001" max="1" step="0.001" /> to 1
+			String's mass from 0.0001
+			<input id="mass" type="range" min="0.0001" max="0.01" step="0.0001" /> to 0.01
 			<button id="setmass">Set mass</button>
 			<br>
 			<button id="redraw">Redraw</button>

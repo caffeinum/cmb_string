@@ -1,5 +1,9 @@
 var Temp = {
 	colorString: function (num) {
+		if ( isNaN(num) ) {
+			//if ( Math.random() > 0.9999 ) console.error('Cant create color from ', num)
+			return '#ff0000';
+		}
 		var str = num.toString(16);
 		if ( str.length < 6 )
 			str = "000000".slice(str.length - 6) + str;
@@ -16,6 +20,8 @@ var Temp = {
 		b = Math.floor( 0xFF * intense * Math.exp( - ( 2 - temp )*( 2 - temp ) / width / intense ) );
 		
 		//var rgb = {r:r,g:g,b:b};
+		
+		//if ( Math.random() > 0.99999 ) console.log('Color is ', r, g, b, 'when', temp, intense)
 		return r * 0x10000 + g * 0x100 + b;
 	},
 	

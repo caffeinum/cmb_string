@@ -8,14 +8,16 @@ function Drawer(width, height) {
 	var w = width;
 	var h = height;
 	var temp = 0;
+	temp = Temp.color(1,1);
+	
 	for ( x = -width; x <= width; x++ ) {	
-		grid[x] = []
+		grid[x] = new Array(2*height);
 		for ( y = -height; y <= height; y++ ){
-			if ( x > - width && y > -height )
-				temp =	grid[x-1][y-1].e(0) * Math.random()/4 + grid[x][y-1].e(0) * Math.random()/4 +
-						grid[x-1][y].e(0) * Math.random()/4 + Math.random()/4
-			
-			grid[x][y] = Vector.create([2*temp,0,0,0])
+			/*if ( x > - width && y > -height )
+				temp =	grid[x-1][y-1] * Math.random()/4 + grid[x][y-1] * Math.random()/4 +
+						grid[x-1][y] * Math.random()/4 + Math.random()/4
+			*/
+			grid[x][y] = temp //Vector.create([2*temp,0,0,0])
 		}
 	}
 	
@@ -58,7 +60,7 @@ function Drawer(width, height) {
 	
 	this.getPoint = function (x,y) {
 		x = Math.round(x); y = Math.round(y)
-		return Temp.color( grid[x][y].e(1), 1 );
+		return grid[x][y];
 	}
 		
 	this.getPoints = function () {

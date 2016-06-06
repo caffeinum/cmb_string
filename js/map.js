@@ -39,14 +39,13 @@ function CMBMap ( canvasId ) {
 	
 	this.drawLabels = function () {
 		var pd = 30
-		this.drawText("x", w - pd,		center.y)
-		this.drawText("y", center.x,	pd)
-		
+		this.drawText("x", w - pd,			center.y - pd, 	"fuchsia")
+		this.drawText("y", center.x + pd,	pd,				"violet")
 	};
 	
 	this.drawAxis = function () {
-		this.drawLine("vertical",	center.x, "black", 1.0);
-		this.drawLine("horizontal",	center.y, "black", 1.0);
+		this.drawLine("vertical",	center.x, "white", 1.0);
+		this.drawLine("horizontal",	center.y, "white", 1.0);
 	};
 	
 	this.drawGrid = function () {
@@ -58,6 +57,15 @@ function CMBMap ( canvasId ) {
 		for ( var j = 0; j < h; j+=step )
 			this.drawLine("horizontal", j, "grey", 0.1);
 	};
+	
+	this.drawScale = function () {
+		var p = 50;
+		for ( var x = -w/2/p; x <= w/2/p; x++ ) {
+			drawPoint(x, h/2/p, p, Temp.color( 1 + x*p*2/w, 1 ) )
+		}
+		
+		
+    };
 	
 	this.drawFrame = function () {
 		cnt.strokeStyle = "#000000";
@@ -96,6 +104,7 @@ function CMBMap ( canvasId ) {
 			this.drawAxis();
 			this.drawGrid();
 			this.drawFrame();
+			this.drawScale();
 		} else {
         	lab_cnt.clearRect(0, 0, canvas.width, canvas.height);
 		}
@@ -120,11 +129,11 @@ function CMBMap ( canvasId ) {
         cnt.drawImage(img,cx,cy,cw,ch,x,y,w,h);
     };
     
-    this.drawText = function (text, x, y) {
+    this.drawText = function (text, x, y, color) {
 		x = x || w/2
 		y = y || h/2
         lab_cnt.font = "24px Arial";
-        lab_cnt.fillStyle = "#000000";
+        lab_cnt.fillStyle = color || "#000000";
         lab_cnt.fillText(text, x,y);
     };
     

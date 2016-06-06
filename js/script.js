@@ -8,7 +8,7 @@ $(document).ready(function () {
 	// make him draw
 	
 	var photons = new PhotonsContainer();
-	var cstring = new CString(.1);
+	var cstring = new CString(.01);
 	
 	photons.init(cstring);
 	
@@ -35,25 +35,30 @@ $(document).ready(function () {
 		image.style.display = "block";
 	});
 	
-	$('#redraw').click(function () {
+	function redraw() {
 		inform("Computing...")
 		drawer.calculate(function () {
 			inform("Done:")
 			cmb_map.draw();
 		});
-	});
+	}
+	$('#redraw').click(redraw);
 	$('#mass').val( cstring.mu )
-	$('#setmass').click(function () {
+	$('#mass').change(function () {
 		var mass = parseFloat($('#mass').val())
 		var cstring = new CString( mass )
 		photons.init(cstring)
 		inform("Set mass " + cstring.mu )
-	});
+		
+		if ( drawer.getPrecision( ) > 50 ) redraw();
+	})
 	
 	
 	$('#precision').val( drawer.getPrecision() )
-	$('#setpr').click(function () {
+	$('#precision').change(function () {
 		var pr = parseInt( $('#precision').val() )
 		inform("Set precision " + drawer.setPrecision( pr ) )
+		
+		if ( drawer.getPrecision( ) > 50 ) redraw();
 	});
 });

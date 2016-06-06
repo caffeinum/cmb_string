@@ -7,6 +7,11 @@ function PhotonsContainer () {
 	var M = null;
 	var cmb_string = null;
 	
+	var q_out, q_in;
+	var k_out, k_in;
+	var w;
+	var I;
+	
 	this.draw = function (context) {
 		context.drawText("Photons container here  " + this.photons[0], Math.random()*500, Math.random()*600)		
 	}
@@ -34,23 +39,34 @@ function PhotonsContainer () {
 	
 	this.getTemp = function (phi, theta) {
 		// k_mu = hw q_mu, where q is 
-		var q = Vector.create([
+		q_out = Vector.create([
 			1,
 			Math.cos(theta) * Math.sin(phi),
 			Math.cos(theta) * Math.cos(phi),
 			Math.sin(theta)
 		])
-		var w = temp;
-		
+		w = temp;
+		// f( phi, theta ) * d(w-T) * d(k-T) = f(w,k,ph,th) - probability density
+		// where T is mean temperature. we think that all quanta have the same energy
+		//
+		// so this f transforms as dw = f * d^4k,
+		// f( phi, theta )
 		if ( Math.abs(phi) > Math.PI/2 )
-			return q.x(w);
+			return Temp.color( q_out.x(w).e(1), 1 );
 		
-		if ( Math.random() > 0.9 ) console.log( M.elements );
-		q = M.x(q);
+		k_out = q_out.x(w);
 		
-		if ( Math.random() > 0.9 ) console.log( M.x(q) );
+		k_in = M.x(k_out);
 		
-		return M.x(q).x(w);
+		
+		// (w'/w)^2 |M| ./[ (w'2 - k'z2) / (w2 - kz2)  ]
+		I = M.det() * ( k_out.e(1)/k_in.e(1) ) * ( k_out.e(1)/k_in.e(1) ) *
+			Math.sqrt( (k_out.e(1)*k_out.e(1) - k_out.e(4)*k_out.e(4)) / (k_in.e(1)*k_in.e(1) - k_in.e(4)*k_in.e(4) ) )
+		
+		if ( Math.random() > 0.95 ) console.log( k_in.elements );
+		if ( Math.random() > 0.95 ) console.log( I );
+		
+		return Temp.color( k_in.e(1), I );
 	}
 }
 

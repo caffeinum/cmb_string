@@ -17,14 +17,25 @@ div#container
 
 #canvas-holder{
 	position: absolute;
-	
+	margin: 0 auto;
+	height: 800ox;
+	align-content: center
+	padding: 0 auto;
 }
 #labels {
 	position: relative;
 	z-index: 1;
+	margin: 0 auto;
 }
 
 #cvs {
 	position: relative;
 	z-index: 0;
+	
+	margin: 0 auto;
+}
+
+input {
+	display: block;
+	width: 50%;
 }
