@@ -14,7 +14,10 @@ div#container
 {
 	text-align: center;
 }
-
+#info {
+	height: 100px;
+	overflow-y: scroll;
+}
 #canvas-holder{
 	position: absolute;
 	margin: 0 auto;

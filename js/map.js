@@ -25,7 +25,7 @@ function CMBMap ( canvasId ) {
 		// init	
 		this.drawLabels();
 		this.drawAxis();
-		this.drawGrid();
+		//this.drawGrid();
 		this.drawFrame();
 	}
 	
@@ -39,8 +39,8 @@ function CMBMap ( canvasId ) {
 	
 	this.drawLabels = function () {
 		var pd = 30
-		this.drawText("x", w - pd,			center.y - pd, 	"fuchsia")
-		this.drawText("y", center.x + pd,	pd,				"violet")
+		this.drawText("φ", w - pd,			center.y - pd, 	"cyan")
+		this.drawText("θ", center.x + pd,	pd * 2,			"cyan")
 	};
 	
 	this.drawAxis = function () {
@@ -89,7 +89,8 @@ function CMBMap ( canvasId ) {
 		
 		var p = this.drawer.getPrecision() || 1;
 		var point, color;
-		
+		cnt.lineWidth = 0;
+		cnt.strokeStyle = "#ff0000"
 		for ( var x = -w/2/p; x <= w/2/p; x++ ) {
 			for ( var y = -h/2/p; y <= h/2/p; y++ ) {
 				color = this.drawer.getPoint(x,y)
@@ -102,7 +103,7 @@ function CMBMap ( canvasId ) {
 		if (!notDrawElements) {
 			this.drawLabels();
 			this.drawAxis();
-			this.drawGrid();
+			//this.drawGrid();
 			this.drawFrame();
 			this.drawScale();
 		} else {
@@ -132,7 +133,7 @@ function CMBMap ( canvasId ) {
     this.drawText = function (text, x, y, color) {
 		x = x || w/2
 		y = y || h/2
-        lab_cnt.font = "24px Arial";
+        lab_cnt.font = "24px Calibri";
         lab_cnt.fillStyle = color || "#000000";
         lab_cnt.fillText(text, x,y);
     };

@@ -14,7 +14,9 @@ var Temp = {
 	gauss: function (temp, intense) {
 		var r = g = b = 0;
 		var width = 2;
-		
+		if ( intense > 1000 ) return 0xffffff
+		if ( temp < 0 ) temp = 0
+		if ( temp > 2 ) temp = 2
 		r = Math.floor( 0xFF * intense * Math.exp( - ( 0 - temp )*( 0 - temp ) / width / intense ) );
 		g = Math.floor( 0xFF * intense * Math.exp( - ( 1 - temp )*( 1 - temp ) / width / intense ) );
 		b = Math.floor( 0xFF * intense * Math.exp( - ( 2 - temp )*( 2 - temp ) / width / intense ) );

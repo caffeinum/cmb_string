@@ -11,6 +11,8 @@
         <script src="lib/jquery-2.1.1.min.js"></script>
         <script src="lib/sylvester.src.js"></script>
 		
+		
+		<script src="js/projections.js"></script>
 		<script src="js/temp.js"></script>
 		<script src="js/drawer.js"></script>
 		<script src="js/drawable.js"></script>
@@ -26,14 +28,18 @@
 			<div id="info">Here's the string</div>
 			Precision from 1 
 			<input id="precision" type="range" min="1" max="100" step="2" /> to 100
-			<button id="setpr">Set precision</button>
-			<br>
-			String's mass from 0.0001
-			<input id="mass" type="range" min="0.0001" max="0.01" step="0.0001" /> to 0.01
-			<button id="setmass">Set mass</button>
+			<!--<button id="setpr">Set precision</button>-->
+			<br><br>
+			String's mass from exp(-10)
+			<input id="mass" type="range" min="-5" max="2" step="0.001" /> to exp(10)
+			<!--<button id="setmass">Set mass</button>-->
 			<br>
 			<button id="redraw">Redraw</button>
 			<button id="imgsave">Save to Image</button>
+			--
+			<button id="animate">Animate</button>
+			<button id="stop">Stop</button>
+			
 			<img id="cvsimg" width="1200" height="800" />
 			<div id="canvas-holder">
 			<canvas id="cvs" style="position: absolute;z-index:0"  width="1200" height="800">

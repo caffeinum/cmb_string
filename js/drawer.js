@@ -46,7 +46,7 @@ function Drawer(width, height) {
 	this.calculate = function (callback) {	
 		objects.forEach(function (elem) {
 			console.log( 'Preparing ' + elem + ' for drawing')
-			elem.prepare(grid, Math.floor(w/2), Math.floor(h/2));
+			elem.prepare(grid, Math.round(w/2), Math.round(h/2));
 		})
 		
 		callback();

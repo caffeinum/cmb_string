@@ -23,6 +23,17 @@ function CString (mass) {
 		return m_txyz;
 	};
 	
+	var A = function(lam, e) {
+		return Matrix.create([
+			[
+				-lam*lam*(lam*lam + 2),
+				+lam*lam*(lam*lam + 1),
+				 2*e*lam*(lam*lam + 1),
+			 						 0,
+			]
+		])
+	}
+	
 	this.init = function () {
 		
 	}
@@ -35,6 +46,12 @@ function CString (mass) {
 		lam = lam || (8 * mu * Math.PI * G);
 		e = (e>0) ? +1 : -1;
 		return M(lam, e)
+	}
+	
+	this.getA = function (e, lam) {
+		lam = lam || (8 * mu * Math.PI * G);
+		e = (e>0) ? +1 : -1;
+		return A(lam, e)
 	}
 }
 
