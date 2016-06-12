@@ -19,23 +19,30 @@ div#container
 	overflow-y: scroll;
 }
 #canvas-holder{
-	position: absolute;
+	position: relative;
 	margin: 0 auto;
-	height: 800ox;
-	align-content: center
-	padding: 0 auto;
+	height: 800px;
+	width: 100%;
+	align-content: center;
+	text-align: center;
 }
 #labels {
-	position: relative;
+	position: absolute;
 	z-index: 1;
 	margin: 0 auto;
+
+    left: 0;
+    right: 0;
 }
 
 #cvs {
-	position: relative;
+	position: absolute;
 	z-index: 0;
-	
 	margin: 0 auto;
+
+    left: 0;
+    right: 0;
+
 }
 
 input {
